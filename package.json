@@ -4,7 +4,7 @@
 	"description": "My Remotion video",
 	"scripts": {
 		"start": "remotion preview src/index.tsx",
-		"build": "remotion render src/index.tsx Empty out/video.mp4",
+		"build": "remotion render src/index.tsx Full out/video.mp4",
 		"upgrade": "remotion upgrade",
 		"test": "eslint src --ext ts,tsx,js,jsx && tsc"
 	},
@@ -14,6 +14,7 @@
 		"@remotion/bundler": "^2.3.2",
 		"@remotion/cli": "^2.3.2",
 		"@remotion/eslint-config": "^2.3.2",
+		"@remotion/media-utils": "^2.5.7",
 		"@remotion/renderer": "^2.3.2",
 		"eslint": "^7.15.0",
 		"prettier": "^2.2.1",

@@ -166,7 +166,7 @@
   resolved "https://registry.yarnpkg.com/@remotion/eslint-plugin/-/eslint-plugin-2.5.7.tgz#e9623d9d2bbd0e85088d45d64dcdedf9734dfcfd"
   integrity sha512-9DXLz3oL+pc1JxK6+4BGZ5EK20fztymq3x8CkvDbxrKBgWnBSMbXE/AVj7KtU9HRFETqWJLrogjKgWZwQalslw==
 
-"@remotion/media-utils@2.5.7":
+"@remotion/media-utils@2.5.7", "@remotion/media-utils@^2.5.7":
   version "2.5.7"
   resolved "https://registry.yarnpkg.com/@remotion/media-utils/-/media-utils-2.5.7.tgz#f1287b6b257c65d4e1c3a4a6bef8dd5fc2e91a44"
   integrity sha512-ILKKDcppoA55uN+59hLrnosncodb8kmnjEhHrYlXMxXySCEDcGD6ca2mdTeYWRa1HEdUZs/gyHT+w28Ug5oX5g==
