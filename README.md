@@ -1,45 +1,36 @@
-# Remotion video
+# Music Info Video
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <img src="https://github.com/remotion-dev/logo/raw/main/withtitle/element-0.png">
-  </a>
-</p>
+[Preview](https://youtu.be/7HVVB5LshTo)
 
-Welcome to your Remotion project!
+## Usage
 
-## Commands
+```shell
+# clone repository
+git clone https://github.com/pikokr/music-info-video
+cd music-info-video
 
-**Start Preview**
+# install dependencies
+yarn
 
-```console
-npm start
+# create config file
+cp src/config.example.ts src/config.ts
 ```
 
-**Render video**
+## Preparing assets
 
-```console
-npm run build
+First, prepare mp3 file and album image.
+
+Then, put them on `src/assets` directory.
+
+## Editing config file
+
+```ts
+export const items: Item[] = [
+    {
+        album: require('./assets/1/album.png'), // Album image location(used on album display and background)
+        artist: 'Test', // The person(or people) who composed the music
+        audio: require('./assets/1/audio.mp3'), // mp3 file location
+        title: 'Test' // Music title
+    }
+]
 ```
-
-**Upgrade Remotion**
-
-```console
-npm run upgrade
-```
-
-## Docs
-
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
-
-## Help
-
-We provide help [on our Discord server](https://discord.gg/6VzzNDwUwV).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Notice that for some entities a company license is needed. Read [the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
