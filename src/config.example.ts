@@ -1,8 +1,3 @@
-type Item = {
-	audio: string;
-	title: string;
-	album: string;
-	artist: string;
-};
+import { Item } from './typings'
 
 export const items: Item[] = [];
