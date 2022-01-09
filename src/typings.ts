@@ -1,6 +1,7 @@
 export type Item = {
-	audio: string;
-	title: string;
-	album: string;
-	artist: string;
-};
+	audio: string
+	album: string
+	background?: string
+	artist: string
+	title: string
+}

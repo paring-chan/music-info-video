@@ -1,3 +1,3 @@
-import { Item } from './typings'
+import {Item} from './typings'
 
-export const items: Item[] = [];
+export const items: Item[] = []

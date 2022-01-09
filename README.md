@@ -26,12 +26,12 @@ Then, put them on `src/assets` directory.
 
 ```ts
 export const items: Item[] = [
-    {
-        album: require('./assets/1/album.png'), // Album image location(used on album display and background)
-        artist: 'Test', // The person(or people) who composed the music
-        audio: require('./assets/1/audio.mp3'), // mp3 file location
-        title: 'Test' // Music title
-    }
+	{
+		album: require('./assets/1/album.png'), // Album image location(used on album display and background)
+		artist: 'Test', // The person(or people) who composed the music
+		audio: require('./assets/1/audio.mp3'), // mp3 file location
+		title: 'Test', // Music title
+	},
 ]
 ```
 

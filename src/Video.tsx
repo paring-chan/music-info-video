@@ -1,22 +1,22 @@
-import {Composition} from 'remotion';
-import {MusicPlayer} from './MusicPlayer';
-import React from 'react';
-import {AudioData, useAudioData} from '@remotion/media-utils';
-import {items} from './config';
-import Main from './Main';
+import {Composition} from 'remotion'
+import {MusicPlayer} from './MusicPlayer'
+import React from 'react'
+import {AudioData, useAudioData} from '@remotion/media-utils'
+import {items} from './config'
+import Main from './Main'
 
 export const RemotionVideo: React.FC = () => {
-	const audioDatas: (AudioData | null)[] = [];
+	const audioDatas: (AudioData | null)[] = []
 
-	let duration = 0;
+	let duration = 0
 
 	for (const item of items) {
 		// eslint-disable-next-line react-hooks/rules-of-hooks
-		const data = useAudioData(item.audio);
-		audioDatas.push(data);
+		const data = useAudioData(item.audio)
+		audioDatas.push(data)
 
 		if (data) {
-			duration += Math.ceil(data.durationInSeconds * 60);
+			duration += Math.ceil(data.durationInSeconds * 60)
 			// if (audioDatas.length > 1) {
 			// 	duration += 60;
 			// }
@@ -48,5 +48,5 @@ export const RemotionVideo: React.FC = () => {
 				/>
 			))}
 		</>
-	);
-};
+	)
+}

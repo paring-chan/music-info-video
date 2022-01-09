@@ -1,23 +1,23 @@
-import {Audio, interpolate, useCurrentFrame} from 'remotion';
-import {useVideoConfig} from 'remotion';
-import {useAudioData, visualizeAudio} from '@remotion/media-utils';
-import React from 'react';
-import {Item} from './typings';
+import {Audio, interpolate, useCurrentFrame} from 'remotion'
+import {useVideoConfig} from 'remotion'
+import {useAudioData, visualizeAudio} from '@remotion/media-utils'
+import React from 'react'
+import {Item} from './typings'
 
-export const MusicPlayer: React.FC<Item> = ({audio, album, title, artist}) => {
-	const frame = useCurrentFrame();
-	const {fps, durationInFrames} = useVideoConfig();
+export const MusicPlayer: React.FC<Item> = ({audio, album, background, title, artist}) => {
+	const frame = useCurrentFrame()
+	const {fps, durationInFrames} = useVideoConfig()
 
-	const audioData = useAudioData(audio);
+	const audioData = useAudioData(audio)
 
-	if (!audioData) return null;
+	if (!audioData) return null
 
 	const visualization = visualizeAudio({
 		audioData,
 		fps,
 		numberOfSamples: 16,
 		frame,
-	});
+	})
 
 	const opacity = interpolate(
 		frame,
@@ -32,7 +32,7 @@ export const MusicPlayer: React.FC<Item> = ({audio, album, title, artist}) => {
 			extrapolateLeft: 'clamp',
 			extrapolateRight: 'clamp',
 		}
-	);
+	)
 
 	return (
 		<div style={{background: '#000', width: '100%', height: '100%'}}>
@@ -54,7 +54,7 @@ export const MusicPlayer: React.FC<Item> = ({audio, album, title, artist}) => {
 							style={{
 								width: 450,
 								height: 450,
-								background: `url(${album})`,
+								background: `url(${background ?? album})`,
 								backgroundSize: 'cover',
 								backgroundPosition: 'center',
 							}}
@@ -163,5 +163,5 @@ export const MusicPlayer: React.FC<Item> = ({audio, album, title, artist}) => {
 				/>
 			</div>
 		</div>
-	);
-};
+	)
+}
