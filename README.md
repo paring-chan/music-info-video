@@ -34,3 +34,9 @@ export const items: Item[] = [
     }
 ]
 ```
+
+## Building
+
+```shell
+yarn build
+```
