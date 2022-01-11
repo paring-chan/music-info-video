@@ -67,9 +67,7 @@ export const MusicPlayer: React.FC<Item> = ({
 							style={{
 								width: 450,
 								height: 450,
-								background: globalBackground
-									? 'transparent'
-									: `url(${background ?? album})`,
+								background: `url(${album})`,
 								backgroundSize: 'cover',
 								backgroundPosition: 'center',
 							}}
@@ -170,7 +168,7 @@ export const MusicPlayer: React.FC<Item> = ({
 						position: 'fixed',
 						left: 0,
 						top: 0,
-						background: `url(${album})`,
+						background: globalBackground ? 'transparent' : `url(${album})`,
 						backgroundSize: 'cover',
 						backgroundPosition: 'center',
 						filter: 'blur(10px) brightness(0.5)',
