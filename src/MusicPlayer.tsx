@@ -44,10 +44,9 @@ export const MusicPlayer: React.FC<Item> = ({
 	return (
 		<div
 			style={{
-				background: globalBackground ? 'transparent' : '#000',
 				width: '100%',
 				height: '100%',
-				opacity,
+				zIndex: 1000,
 			}}
 		>
 			<div
@@ -58,6 +57,7 @@ export const MusicPlayer: React.FC<Item> = ({
 					display: 'flex',
 					alignItems: 'center',
 					justifyContent: 'center',
+					opacity,
 				}}
 			>
 				<div style={{display: 'flex', gap: 40, zIndex: 10}}>
@@ -168,10 +168,14 @@ export const MusicPlayer: React.FC<Item> = ({
 						position: 'fixed',
 						left: 0,
 						top: 0,
-						background: globalBackground ? 'transparent' : `url(${background})`,
-						backgroundSize: 'cover',
-						backgroundPosition: 'center',
-						filter: 'blur(10px) brightness(0.5)',
+						...(globalBackground
+							? {}
+							: {
+									backgroundImage: `url(${
+										background ?? album
+									}) center no-repeat cover`,
+									filter: 'blur(10px) brightness(0.5)',
+							  }),
 					}}
 				/>
 			</div>

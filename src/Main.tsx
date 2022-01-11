@@ -22,7 +22,6 @@ const Main: React.FC = () => {
 	return (
 		<div
 			style={{
-				background: '#000',
 				width: '100%',
 				height: '100%',
 			}}
@@ -45,19 +44,20 @@ const Main: React.FC = () => {
 				</Sequence>
 			))}
 
-			<div
-				style={{
-					position: 'fixed',
-					left: 0,
-					top: 0,
-					width: '100%',
-					height: '100%',
-					background: background ? `url(${background})` : '#000',
-					backgroundSize: 'cover',
-					backgroundPosition: 'center',
-					filter: 'blur(10px) brightness(0.5)',
-				}}
-			/>
+			{background && (
+				<div
+					style={{
+						position: 'fixed',
+						left: 0,
+						top: 0,
+						width: '100%',
+						height: '100%',
+						background: `no-repeat center url(${background})`,
+						backgroundSize: 'cover',
+						filter: 'blur(10px) brightness(0.5)',
+					}}
+				/>
+			)}
 		</div>
 	)
 }
