@@ -23,6 +23,9 @@ const Main: React.FC = () => {
 		<div
 			style={{
 				background: background ? `url(${background})` : '#000',
+				backgroundSize: 'cover',
+				backgroundPosition: 'center',
+				filter: 'blur(10px) brightness(0.5)',
 				width: '100%',
 				height: '100%',
 			}}
