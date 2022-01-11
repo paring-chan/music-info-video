@@ -1,5 +1,5 @@
 import React from 'react'
-import {items} from './config'
+import {background, items} from './config'
 import {Sequence} from 'remotion'
 import {MusicPlayer} from './MusicPlayer'
 import {AudioData, useAudioData} from '@remotion/media-utils'
@@ -20,7 +20,13 @@ const Main: React.FC = () => {
 	let current = 0
 
 	return (
-		<div style={{background: '#000', width: '100%', height: '100%'}}>
+		<div
+			style={{
+				background: background ? `url(${background})` : '#000',
+				width: '100%',
+				height: '100%',
+			}}
+		>
 			{items.map((x, i) => (
 				<Sequence
 					key={i}

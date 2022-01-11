@@ -3,8 +3,15 @@ import {useVideoConfig} from 'remotion'
 import {useAudioData, visualizeAudio} from '@remotion/media-utils'
 import React from 'react'
 import {Item} from './typings'
+import {background as globalBackground} from './config'
 
-export const MusicPlayer: React.FC<Item> = ({audio, album, background, title, artist}) => {
+export const MusicPlayer: React.FC<Item> = ({
+	audio,
+	album,
+	background,
+	title,
+	artist,
+}) => {
 	const frame = useCurrentFrame()
 	const {fps, durationInFrames} = useVideoConfig()
 
@@ -35,7 +42,13 @@ export const MusicPlayer: React.FC<Item> = ({audio, album, background, title, ar
 	)
 
 	return (
-		<div style={{background: '#000', width: '100%', height: '100%'}}>
+		<div
+			style={{
+				background: globalBackground ? 'transparent' : '#000',
+				width: '100%',
+				height: '100%',
+			}}
+		>
 			<div
 				style={{
 					width: '100%',
@@ -54,7 +67,9 @@ export const MusicPlayer: React.FC<Item> = ({audio, album, background, title, ar
 							style={{
 								width: 450,
 								height: 450,
-								background: `url(${background ?? album})`,
+								background: globalBackground
+									? 'transparent'
+									: `url(${background ?? album})`,
 								backgroundSize: 'cover',
 								backgroundPosition: 'center',
 							}}

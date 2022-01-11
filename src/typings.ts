@@ -5,3 +5,5 @@ export type Item = {
 	artist: string
 	title: string
 }
+
+export type BackgroundSetting = string | null
