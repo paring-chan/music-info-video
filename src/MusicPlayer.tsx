@@ -1,9 +1,10 @@
-import {Audio, interpolate, useCurrentFrame} from 'remotion'
+import {Audio, Easing, interpolate, random, useCurrentFrame} from 'remotion'
 import {useVideoConfig} from 'remotion'
 import {useAudioData, visualizeAudio} from '@remotion/media-utils'
 import React from 'react'
 import {Item} from './typings'
 import {background as globalBackground} from './config'
+import _ from 'lodash'
 
 export const MusicPlayer: React.FC<Item> = ({
 	audio,
@@ -11,11 +12,17 @@ export const MusicPlayer: React.FC<Item> = ({
 	background,
 	title,
 	artist,
+	bgAnimation,
 }) => {
 	const frame = useCurrentFrame()
 	const {fps, durationInFrames} = useVideoConfig()
 
 	const audioData = useAudioData(audio)
+
+	const posX = React.useRef(0)
+	const posY = React.useRef(0)
+	const posXSeed = React.useRef(100)
+	const posYSeed = React.useRef(100)
 
 	if (!audioData) return null
 
@@ -41,6 +48,35 @@ export const MusicPlayer: React.FC<Item> = ({
 		}
 	)
 
+	// const bgMovementX = interpolate(frame,
+	// 	new Array(durationInFrames / 60), [])
+
+	const posYToChange = (random(`posy-${posYSeed.current}`) - 0.5) * 2
+
+	if (
+		(posY.current > 30 && posYToChange > 0) ||
+		(posY.current < -30 && posYToChange < 0)
+	) {
+		posY.current = posY.current - posYToChange
+		posYSeed.current++
+	} else {
+		posY.current = posY.current + posYToChange
+	}
+
+	const posXToChange = (random(`posx-${posXSeed.current}`) - 0.5) * 2
+
+	if (
+		(posX.current > 30 && posXToChange > 0) ||
+		(posX.current < -30 && posXToChange < 0)
+	) {
+		posX.current = posX.current - posXToChange
+		posXSeed.current++
+	} else {
+		posX.current = posX.current + posXToChange
+	}
+
+	console.log(posXToChange, posYToChange)
+
 	return (
 		<div
 			style={{
@@ -60,7 +96,13 @@ export const MusicPlayer: React.FC<Item> = ({
 					opacity,
 				}}
 			>
-				<div style={{display: 'flex', gap: 40, zIndex: 10}}>
+				<div
+					style={{
+						display: 'flex',
+						gap: 40,
+						zIndex: 10,
+					}}
+				>
 					<Audio src={audio} volume={() => 0.4} />
 					<div>
 						<div
@@ -163,18 +205,22 @@ export const MusicPlayer: React.FC<Item> = ({
 				</div>
 				<div
 					style={{
-						width: '100%',
-						height: '100%',
+						width: 'calc(100% + 160px)',
+						height: 'calc(100% + 160px)',
 						position: 'fixed',
-						left: 0,
-						top: 0,
+						left: -(160 / 2),
+						top: -(160 / 2),
+						transform: bgAnimation
+							? `translateX(${posX.current}px) translateY(${posY.current}px)`
+							: 'unset',
 						...(globalBackground
 							? {}
 							: {
-									backgroundImage: `url(${
-										background ?? album
-									}) center no-repeat cover`,
-									filter: 'blur(10px) brightness(0.5)',
+									backgroundImage: `url(${background ?? album})`,
+									backgroundSize: 'cover',
+									backgroundPosition: 'center',
+									backgroundRepeat: 'no-repeat',
+									filter: `blur(10px) brightness(0.7)`,
 							  }),
 					}}
 				/>

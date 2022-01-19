@@ -4,6 +4,7 @@ export type Item = {
 	background?: string
 	artist: string
 	title: string
+	bgAnimation?: boolean
 }
 
 export type BackgroundSetting = string | null
