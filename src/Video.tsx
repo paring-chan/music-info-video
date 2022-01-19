@@ -4,6 +4,7 @@ import React from 'react'
 import {AudioData, useAudioData} from '@remotion/media-utils'
 import {items} from './config'
 import Main from './Main'
+import Timestamp from './Timestamp'
 
 export const RemotionVideo: React.FC = () => {
 	const audioDatas: (AudioData | null)[] = []
@@ -32,6 +33,14 @@ export const RemotionVideo: React.FC = () => {
 				fps={60}
 				durationInFrames={duration || 60}
 				component={Main}
+			/>
+			<Composition
+				width={1920}
+				height={1080}
+				id="timestamp"
+				fps={60}
+				durationInFrames={60}
+				component={Timestamp}
 			/>
 			{items.map((x, i) => (
 				<Composition
